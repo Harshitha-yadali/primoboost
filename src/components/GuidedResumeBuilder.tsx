@@ -274,10 +274,11 @@ export const GuidedResumeBuilder: React.FC<GuidedResumeBuilderProps> = ({
       return;
     }
 
-    if (!userSubscription || userSubscription.guidedBuildsTotal - userSubscription.guidedBuildsUsed <= 0) {
-      onShowSubscriptionPlans();
-      return;
-    }
+   if (!userSubscription || remainingCredits <= 0) {
+  onShowAlert?.("You’ve used all your guided resume credits. Upgrade to unlock more!");
+  onShowSubscriptionPlans?.();
+  return;
+}
 
     setIsGenerating(true);
     try {
