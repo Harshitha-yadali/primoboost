@@ -19,12 +19,14 @@ import {
   FileText,
   Eye
 } from 'lucide-react';
+import { paymentService } from '../services/paymentService';
+
 import { UserType, ResumeData } from '../types/resume';
 import { optimizeResume } from '../services/geminiService';
 import { useAuth } from '../contexts/AuthContext';
 import { ResumePreview } from './ResumePreview';
 import { ExportButtons } from './ExportButtons';
-import { paymentService } from '../services/paymentService'; // Import the payment service
+ // Import the payment service
 
 interface ContactDetails {
   fullName: string;
