@@ -85,6 +85,7 @@ export const GuidedResumeBuilder: React.FC<GuidedResumeBuilderProps> = ({
   userSubscription,
   onShowSubscriptionPlans,
   refreshUserSubscription, // Corrected prop name here
+   onShowAlert // ✅ ADD THIS
 }) => {
   const { user } = useAuth();
   const [currentStep, setCurrentStep] = useState(0);
