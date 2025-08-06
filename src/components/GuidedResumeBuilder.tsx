@@ -77,6 +77,7 @@ interface GuidedResumeBuilderProps {
   userSubscription: any;
   onShowSubscriptionPlans: () => void;
   refreshUserSubscription: () => void; // Corrected prop name to match the usage in the function
+  onShowAlert: (message: string) => void; // ✅ ADD THIS
 }
 
 export const GuidedResumeBuilder: React.FC<GuidedResumeBuilderProps> = ({
