@@ -455,7 +455,7 @@ export const GuidedResumeBuilder: React.FC<GuidedResumeBuilderProps> = ({
     switch (currentStep) {
       case 0: return (/* JSX for step 0 */);
       case 1: return (/* JSX for step 1 */);
-      case 2: return (/* JSX for step 2 */);
+      case 2:return <></>;
       case 3: return (/* JSX for step 3 */);
       case 4: return (/* JSX for step 4 */);
       case 5: return (/* JSX for step 5 */);
