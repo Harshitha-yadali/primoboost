@@ -1,6 +1,6 @@
 // src/App.tsx
 import React, { useState, useEffect } from 'react';
-import { X, LogIn, LogOut, User, Wallet } from 'lucide-react';
+import { X, LogIn, LogOut, User, Wallet, CreditCard } from 'lucide-react';
 import { useAuth } from './contexts/AuthContext';
 import { Header } from './components/Header';
 import { Sidebar } from './components/navigation/Sidebar';
@@ -14,7 +14,6 @@ import { Contact } from './components/pages/Contact';
 import { Tutorials } from './components/pages/Tutorials';
 import { AuthModal } from './components/auth/AuthModal';
 import { UserProfileManagement } from './components/UserProfileManagement';
-import { SubscriptionPlans } from './components/payment/SubscriptionPlans';
 import { paymentService } from './services/paymentService';
 import { AlertModal } from './components/AlertModal'; // Import AlertModal
 
@@ -25,7 +24,6 @@ function App() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showProfileManagement, setShowProfileManagement] = useState(false);
-  const [showSubscriptionPlans, setShowSubscriptionPlans] = useState(false);
   const [showSuccessNotification, setShowSuccessNotification] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [profileViewMode, setProfileViewMode] = useState<'profile' | 'wallet'>('profile');
@@ -118,11 +116,11 @@ function App() {
   };
 
   const handleShowSubscriptionPlans = () => {
-    setShowSubscriptionPlans(true);
+    setCurrentPage('pricing');
   };
 
   const handleSubscriptionSuccess = async () => {
-    setShowSubscriptionPlans(false);
+    setCurrentPage('new-home');
     setSuccessMessage('Subscription activated successfully!');
     setShowSuccessNotification(true);
     setTimeout(() => {
@@ -270,6 +268,16 @@ function App() {
           onShowAlert={handleShowAlert}
           refreshUserSubscription={refreshUserSubscription}
         />;
+      case 'pricing':
+        return <PricingPage
+          onNavigateBack={() => setCurrentPage('new-home')}
+          onSubscriptionSuccess={handleSubscriptionSuccess}
+          onShowAlert={handleShowAlert}
+        />;
+      case 'referral':
+        return <ReferralPage
+          onNavigateBack={() => setCurrentPage('new-home')}
+        />;
       default:
         return <HomePage {...homePageProps} />;
     }
@@ -338,14 +346,6 @@ function App() {
         walletRefreshKey={walletRefreshKey} // Pass walletRefreshKey
         setWalletRefreshKey={setWalletRefreshKey} // Pass setWalletRefreshKey
       />
-      {showSubscriptionPlans && (
-        <SubscriptionPlans
-          isOpen={showSubscriptionPlans}
-          onNavigateBack={() => setShowSubscriptionPlans(false)}
-          onSubscriptionSuccess={handleSubscriptionSuccess}
-          onShowAlert={handleShowAlert} 
-        />
-      )}
       <AlertModal
         isOpen={showAlertModal}
         onClose={() => setShowAlertModal(false)}

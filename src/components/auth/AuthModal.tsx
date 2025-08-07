@@ -85,6 +85,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   const handleCloseClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    console.log('AuthModal: Close button clicked');
     onClose();
   };
 
@@ -113,24 +114,24 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-2 sm:p-4 backdrop-blur-sm" onClick={handleBackdropClick}>
-      <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl w-full max-w-[95vw] sm:max-w-md max-h-[98vh] sm:max-h-[95vh] border border-gray-100 flex flex-col">
-        <div className="relative bg-gradient-to-br from-blue-50 to-indigo-50 px-4 sm:px-6 py-4 sm:py-8 border-b border-gray-100 flex-shrink-0">
+    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-2 sm:p-4 backdrop-blur-sm" onClick={handleBackdropClick}>
+      <div className="bg-dark-200 rounded-2xl sm:rounded-3xl shadow-2xl w-full max-w-[95vw] sm:max-w-md max-h-[98vh] sm:max-h-[95vh] border border-dark-400 flex flex-col">
+        <div className="relative bg-gradient-to-br from-neon-400/10 to-electric-400/10 px-4 sm:px-6 py-4 sm:py-8 border-b border-dark-400 flex-shrink-0">
           <button
             onClick={handleCloseClick}
-            className="absolute top-2 sm:top-4 right-2 sm:right-4 w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors rounded-full hover:bg-white/50 z-10 min-w-[44px] min-h-[44px]"
+            className="absolute top-2 sm:top-4 right-2 sm:right-4 w-10 h-10 flex items-center justify-center text-dark-600 hover:text-neon-400 transition-colors rounded-full hover:bg-dark-300/50 z-10 min-w-[44px] min-h-[44px]"
           >
             <X className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           <div className="text-center">
-            <div className="bg-gradient-to-br from-blue-600 to-indigo-600 w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-lg">
-              <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+            <div className="bg-gradient-to-br from-neon-400 to-electric-400 w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-lg glow-neon">
+              <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-dark-100" />
             </div>
-            <h1 className="text-lg sm:text-2xl font-bold text-gray-900 mb-2 px-4">
+            <h1 className="text-lg sm:text-2xl font-bold text-dark-900 mb-2 px-4">
               {getTitle()}
             </h1>
-            <p className="text-gray-600 text-xs sm:text-sm px-4">
+            <p className="text-dark-600 text-xs sm:text-sm px-4">
               {currentView === 'login' && 'Sign in to optimize your resume with AI'}
               {currentView === 'signup' && 'Create your account and start optimizing'}
               {currentView === 'forgot-password' && 'We\'ll help you reset your password'}
@@ -141,7 +142,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           </div>
         </div>
 
-        <div className="p-4 sm:p-6 overflow-y-auto flex-1 min-h-0">
+        <div className="p-4 sm:p-6 overflow-y-auto flex-1 min-h-0 bg-dark-200">
           {currentView === 'login' && (
             <LoginForm
               onSwitchToSignup={() => setCurrentView('signup')}
@@ -184,23 +185,23 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
           {currentView === 'success' && (
             <div className="text-center py-6 sm:py-8">
-              <div className="bg-green-100 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-green-600" />
+              <div className="bg-electric-400/20 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-electric-400" />
               </div>
-              <h2 className="text-lg sm:text-2xl font-bold text-gray-900 mb-3">All Set!</h2>
+              <h2 className="text-lg sm:text-2xl font-bold text-dark-900 mb-3">All Set!</h2>
               {signupEmail ? (
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed px-4">
+                  <p className="text-sm sm:text-base text-dark-600 leading-relaxed px-4">
                     A verification email has been sent to <br />
-                    <strong className="text-gray-900">{signupEmail}</strong>
+                    <strong className="text-dark-900">{signupEmail}</strong>
                   </p>
                 ) : (
-                <p className="text-sm sm:text-base text-gray-600 leading-relaxed px-4">
+                <p className="text-sm sm:text-base text-dark-600 leading-relaxed px-4">
                   Password reset email sent. Check your inbox!
                 </p>
               )}
               <button
                 onClick={() => onClose()}
-                className="w-full mt-6 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 px-4 rounded-xl text-sm transition-colors"
+                className="w-full mt-6 btn-secondary"
               >
                 Close
               </button>
@@ -209,11 +210,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
           {currentView === 'postSignupPrompt' && (
             <div className="text-center py-6 sm:py-8">
-              <div className="bg-blue-100 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />
+              <div className="bg-neon-400/20 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-neon-400" />
               </div>
-              <h2 className="text-lg sm:text-2xl font-bold text-gray-900 mb-3">Welcome!</h2>
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed px-4 mb-6">
+              <h2 className="text-lg sm:text-2xl font-bold text-dark-900 mb-3">Welcome!</h2>
+              <p className="text-sm sm:text-base text-dark-600 leading-relaxed px-4 mb-6">
                 Your account for **{signupEmail}** has been created successfully!
                 Would you like to complete your profile now?
               </p>
@@ -223,7 +224,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     onProfileFillRequest(); // This will now pass isPostSignup: true
                     // AuthModal will close itself via useEffect
                   }}
-                  className="w-full btn-primary py-3 px-4 rounded-xl font-semibold text-sm transition-colors"
+                  className="w-full btn-primary"
                 >
                   Complete Profile
                 </button>
@@ -232,7 +233,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     onPromptDismissed();
                     // AuthModal will close itself via useEffect
                   }}
-                  className="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 px-4 rounded-xl text-sm transition-colors"
+                  className="w-full btn-secondary"
                 >
                   Skip for now
                 </button>

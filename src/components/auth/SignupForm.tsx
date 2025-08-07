@@ -132,17 +132,17 @@ export const SignupForm: React.FC<SignupFormProps> = ({ onSwitchToLogin, onSignu
   // }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 bg-dark-200">
       {error && (
-        <div className="p-4 bg-red-50 border border-red-200 rounded-xl">
+        <div className="p-4 bg-red-400/10 border border-red-400/30 rounded-xl">
           <div className="flex items-start">
-            <AlertCircle className="w-5 h-5 text-red-600 mr-3 flex-shrink-0 mt-0.5" />
+            <AlertCircle className="w-5 h-5 text-red-400 mr-3 flex-shrink-0 mt-0.5" />
             <div className="flex-1">
-              <p className="text-red-700 text-sm font-medium">{error}</p>
+              <p className="text-red-400 text-sm font-medium">{error}</p>
               {error.includes('already exists') && (
                 <button
                   onClick={onSwitchToLogin}
-                  className="text-red-600 text-xs mt-1 underline hover:no-underline"
+                  className="text-red-400 text-xs mt-1 underline hover:no-underline"
                 >
                   Sign in instead
                 </button>
@@ -155,24 +155,24 @@ export const SignupForm: React.FC<SignupFormProps> = ({ onSwitchToLogin, onSignu
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         {/* Name Input */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-3">
+          <label className="block text-sm font-semibold text-dark-800 mb-3">
             Full Name <span className="text-red-500">*</span>
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <User className="h-5 w-5 text-gray-400" />
+              <User className="h-5 w-5 text-dark-600" />
             </div>
             <input
               {...register('name')}
               type="text"
               placeholder="Enter your full name"
-              className={`w-full pl-12 pr-4 py-4 border-2 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 text-gray-900 placeholder-gray-400 ${
-                errors.name ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white hover:border-gray-300'
+              className={`input-base pl-12 pr-4 py-4 ${
+                errors.name ? 'border-red-400/50 bg-red-400/10' : ''
               }`}
             />
           </div>
           {errors.name && (
-            <p className="mt-2 text-sm text-red-600 flex items-center">
+            <p className="mt-2 text-sm text-red-400 flex items-center">
               <AlertCircle className="w-4 h-4 mr-1" />
               {errors.name.message}
             </p>
@@ -329,10 +329,10 @@ export const SignupForm: React.FC<SignupFormProps> = ({ onSwitchToLogin, onSignu
         <button
           type="submit"
           disabled={isLoading}
-          className={`w-full py-4 px-6 rounded-xl font-semibold text-white transition-all duration-300 flex items-center justify-center space-x-2 ${
+          className={`w-full py-4 px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2 min-h-touch ${
             isLoading
-              ? 'bg-gray-400 cursor-not-allowed'
-              : 'bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 active:scale-[0.98] shadow-lg hover:shadow-xl'
+              ? 'bg-dark-400 cursor-not-allowed text-dark-600'
+              : 'btn-primary glow-neon active:scale-[0.98]'
           }`}
         >
           {isLoading ? (
@@ -351,14 +351,14 @@ export const SignupForm: React.FC<SignupFormProps> = ({ onSwitchToLogin, onSignu
       </form>
 
       {/* Switch to Login */}
-      <div className="text-center pt-6 border-t border-gray-100">
-        <p className="text-gray-600 text-sm mb-3">
+      <div className="text-center pt-6 border-t border-dark-400">
+        <p className="text-dark-600 text-sm mb-3">
           Already have an account?
         </p>
         <button
           type="button"
           onClick={onSwitchToLogin}
-          className="text-green-600 hover:text-green-700 font-semibold transition-colors hover:underline"
+          className="text-electric-400 hover:text-neon-400 font-semibold transition-colors hover:underline"
         >
           Sign in here →
         </button>
