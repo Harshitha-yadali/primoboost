@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base styles for responsive design */
+/* Base styles for dark theme */
 @layer base {
   html {
     font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
@@ -11,7 +11,7 @@
   }
   
   body {
-    @apply text-secondary-900 bg-white antialiased;
+    @apply text-dark-900 bg-dark-100 antialiased;
     font-feature-settings: 'liga' 1, 'kern' 1;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -19,41 +19,41 @@
     overflow-x: hidden;
   }
   
-  /* Fluid typography for semantic headings */
+  /* Fluid typography for semantic headings - Dark theme */
   h1 {
-    @apply text-fluid-4xl font-bold text-secondary-900 leading-tight;
+    @apply text-fluid-4xl font-bold text-dark-900 leading-tight;
   }
   
   h2 {
-    @apply text-fluid-3xl font-bold text-secondary-900 leading-tight;
+    @apply text-fluid-3xl font-bold text-dark-900 leading-tight;
   }
   
   h3 {
-    @apply text-fluid-2xl font-semibold text-secondary-900 leading-snug;
+    @apply text-fluid-2xl font-semibold text-dark-800 leading-snug;
   }
   
   h4 {
-    @apply text-fluid-xl font-semibold text-secondary-800 leading-snug;
+    @apply text-fluid-xl font-semibold text-dark-800 leading-snug;
   }
   
   h5 {
-    @apply text-fluid-lg font-medium text-secondary-800 leading-normal;
+    @apply text-fluid-lg font-medium text-dark-700 leading-normal;
   }
   
   h6 {
-    @apply text-fluid-base font-medium text-secondary-700 leading-normal;
+    @apply text-fluid-base font-medium text-dark-700 leading-normal;
   }
   
   p {
-    @apply text-fluid-base text-secondary-700 leading-relaxed;
+    @apply text-fluid-base text-dark-700 leading-relaxed;
   }
   
-  /* Focus states for accessibility */
+  /* Focus states for accessibility - Neon accents */
   button:focus,
   input:focus,
   textarea:focus,
   select:focus {
-    outline: 2px solid theme('colors.primary.500');
+    outline: 2px solid theme('colors.neon.400');
     outline-offset: 2px;
   }
   
@@ -66,52 +66,82 @@
   }
 }
 
-/* Component layer for reusable patterns */
+/* Component layer for dark theme patterns */
 @layer components {
   /* Container with responsive padding */
   .container-responsive {
     @apply w-full max-w-10xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   
-  /* Button base styles */
+  /* Button base styles - Dark theme */
   .btn-base {
     @apply inline-flex items-center justify-center min-w-button min-h-button px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
   
   .btn-primary {
-    @apply btn-base bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800 focus:ring-primary-500 shadow-md hover:shadow-lg;
+    @apply btn-base bg-gradient-to-r from-neon-400 to-electric-400 text-dark-100 hover:from-neon-500 hover:to-electric-500 active:from-neon-600 active:to-electric-600 focus:ring-neon-400 shadow-lg hover:shadow-xl hover:shadow-neon-400/25;
   }
   
   .btn-secondary {
-    @apply btn-base bg-secondary-100 text-secondary-700 hover:bg-secondary-200 active:bg-secondary-300 focus:ring-secondary-500;
+    @apply btn-base bg-dark-300 text-dark-800 hover:bg-dark-400 active:bg-dark-500 focus:ring-dark-500 border border-dark-400;
   }
   
-  /* Card styles */
+  .btn-neon {
+    @apply btn-base bg-transparent border-2 border-neon-400 text-neon-400 hover:bg-neon-400 hover:text-dark-100 focus:ring-neon-400 transition-all duration-300;
+  }
+  
+  /* Card styles - Dark theme */
   .card {
-    @apply bg-white rounded-xl shadow-sm border border-secondary-200 overflow-hidden;
+    @apply bg-dark-200 rounded-xl shadow-sm border border-dark-400 overflow-hidden;
   }
   
   .card-hover {
-    @apply card transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer;
+    @apply card transition-all duration-300 hover:shadow-lg hover:shadow-neon-400/10 hover:scale-[1.02] cursor-pointer hover:border-neon-400/50;
   }
   
-  /* Input styles */
+  .card-neon {
+    @apply card border-neon-400/30 bg-gradient-to-br from-dark-200 to-dark-300 hover:border-neon-400 hover:shadow-neon-400/20;
+  }
+  
+  /* Input styles - Dark theme */
   .input-base {
-    @apply w-full px-3 py-2 sm:px-4 sm:py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-secondary-900 placeholder-secondary-400;
+    @apply w-full px-3 py-2 sm:px-4 sm:py-3 border border-dark-400 rounded-lg focus:ring-2 focus:ring-neon-400 focus:border-neon-400 transition-all duration-200 text-dark-900 placeholder-dark-600 bg-dark-200;
   }
   
-  /* Navigation styles */
+  /* Navigation styles - Dark theme */
   .nav-link {
-    @apply px-3 py-2 sm:px-4 sm:py-2 rounded-lg font-medium transition-all duration-200 hover:bg-primary-50 hover:text-primary-700;
+    @apply px-3 py-2 sm:px-4 sm:py-2 rounded-lg font-medium transition-all duration-200 hover:bg-dark-300 hover:text-neon-400;
   }
   
   .nav-link-active {
-    @apply nav-link bg-primary-100 text-primary-700;
+    @apply nav-link bg-dark-300 text-neon-400 border-l-2 border-neon-400;
   }
   
-  /* Loading spinner */
+  /* Loading spinner - Neon */
   .spinner {
-    @apply animate-spin rounded-full border-2 border-primary-200 border-t-primary-600;
+    @apply animate-spin rounded-full border-2 border-dark-400 border-t-neon-400;
+  }
+  
+  /* Neon glow effects */
+  .glow-neon {
+    @apply shadow-lg shadow-neon-400/25;
+  }
+  
+  .glow-electric {
+    @apply shadow-lg shadow-electric-400/25;
+  }
+  
+  .glow-purple {
+    @apply shadow-lg shadow-purple-400/25;
+  }
+  
+  /* Text gradients */
+  .text-gradient-neon {
+    @apply bg-gradient-to-r from-neon-400 to-electric-400 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-purple {
+    @apply bg-gradient-to-r from-purple-400 to-neon-400 bg-clip-text text-transparent;
   }
 }
 
@@ -165,6 +195,21 @@
   .text-responsive-center {
     @apply text-center sm:text-left;
   }
+  
+  /* Custom dark theme utilities */
+  .bg-dark-gradient {
+    background: linear-gradient(135deg, #0D1117 0%, #161B22 100%);
+  }
+  
+  .border-neon-glow {
+    border-color: theme('colors.neon.400');
+    box-shadow: 0 0 10px theme('colors.neon.400/0.3');
+  }
+  
+  .text-neon-glow {
+    color: theme('colors.neon.400');
+    text-shadow: 0 0 10px theme('colors.neon.400/0.5');
+  }
 }
 
 /* Legacy animations (kept for backward compatibility) */
@@ -175,4 +220,22 @@
 
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.dark.200');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.dark.500');
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.neon.400');
 }
