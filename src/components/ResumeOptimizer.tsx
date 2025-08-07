@@ -24,7 +24,7 @@ import { ComprehensiveAnalysis } from './ComprehensiveAnalysis'; // Displays sco
 import { ProjectAnalysisModal } from './ProjectAnalysisModal'; // Modal for project analysis
 import { MobileOptimizedInterface } from './MobileOptimizedInterface'; // Mobile-specific UI
 import { ProjectEnhancement } from './ProjectEnhancement'; // Modal for project enhancement suggestions
-import { SubscriptionPlans } from './payment/SubscriptionPlans'; // Modal for payment/subscription plans
+import { PricingPage } from "../pages/PricingPage";
 import { SubscriptionStatus } from './payment/SubscriptionStatus'; // Component to display subscription info
 import { MissingSectionsModal } from './MissingSectionsModal'; // Modal for user to add missing sections
 import { InputWizard } from './InputWizard'; // Main input wizard component
