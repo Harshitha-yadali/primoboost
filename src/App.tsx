@@ -8,7 +8,7 @@ import ResumeOptimizer from './components/ResumeOptimizer';
 import { HomePage } from './components/pages/HomePage';
 import { GuidedResumeBuilder } from './components/GuidedResumeBuilder';
 import { ResumeScoreChecker } from './components/ResumeScoreChecker';
-import { LinkedInMessageGenerator } => './components/LinkedInMessageGenerator';
+import { LinkedInMessageGenerator } from './components/LinkedInMessageGenerator';
 import { AboutUs } from './components/pages/AboutUs';
 import { Contact } from './components/pages/Contact';
 import { Tutorials } from './components/pages/Tutorials';
