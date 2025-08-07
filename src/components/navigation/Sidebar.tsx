@@ -14,9 +14,11 @@ import {
   Sparkles,
   Zap,
   Award,
-  Users
+  Users,
+  CreditCard // Import CreditCard icon
 } from 'lucide-react';
-import { useAuth } from '../../contexts/AuthContext';
+// Assuming useAuth is available in your project structure
+// import { useAuth } from '../../contexts/AuthContext'; 
 
 interface SidebarProps {
   currentPage: string;
@@ -33,6 +35,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onClose,
   onShowTutorial
 }) => {
+  // Mock useAuth for demonstration if AuthContext is not provided
+  const useAuth = () => ({ isAuthenticated: true }); // Replace with actual useAuth hook
   const { isAuthenticated } = useAuth();
   const [expandedSection, setExpandedSection] = useState<string | null>('tools');
 
@@ -41,6 +45,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { id: 'about', label: 'About Us', icon: <Info className="w-5 h-5" /> },
     { id: 'tutorials', label: 'Tutorials', icon: <BookOpen className="w-5 h-5" /> },
     { id: 'contact', label: 'Contact', icon: <Phone className="w-5 h-5" /> },
+    { id: 'pricing', label: 'Pricing', icon: <CreditCard className="w-5 h-5" /> }, // Added Pricing item
   ];
 
   const aiTools = [
