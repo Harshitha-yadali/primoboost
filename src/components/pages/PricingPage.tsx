@@ -282,20 +282,20 @@ export const PricingPage: React.FC<PricingPageProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-dark-100 text-dark-900">
+    <div className="min-h-screen bg-dark-bg text-text-light">
       {/* Header */}
-      <div className="bg-dark-200 border-b border-dark-400 sticky top-0 z-40">
+      <div className="bg-primary-100 border-b border-primary-300 sticky top-0 z-40">
         <div className="container-responsive">
           <div className="flex items-center justify-between h-16">
             <button
               onClick={onNavigateBack}
-              className="flex items-center space-x-2 text-dark-700 hover:text-neon-400 transition-colors min-h-touch"
+              className="flex items-center space-x-2 text-primary-900 hover:text-secondary-500 transition-colors min-h-touch"
             >
               <ArrowLeft className="w-5 h-5" />
               <span className="hidden sm:block">Back to Home</span>
             </button>
 
-            <h1 className="text-xl font-bold text-dark-900">
+            <h1 className="text-xl font-bold text-text-light">
               {currentStep === 'plans' ? 'Choose Your Plan' : 'Complete Payment'}
             </h1>
 
@@ -309,13 +309,13 @@ export const PricingPage: React.FC<PricingPageProps> = ({
         <div className="container-responsive py-8">
           {/* Hero Section */}
           <div className="text-center mb-12">
-            <div className="bg-gradient-to-r from-neon-400 to-electric-400 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg glow-neon">
-              <Sparkles className="w-10 h-10 text-dark-100" />
+            <div className="bg-gradient-to-r from-neon-blue to-secondary-500 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <Sparkles className="w-10 h-10 text-dark-bg" />
             </div>
-            <h1 className="text-4xl font-bold text-dark-900 mb-4">
+            <h1 className="text-4xl font-bold text-text-light mb-4">
               🏆 Ultimate Resume & Job Prep Plans
             </h1>
-            <p className="text-xl text-dark-700 mb-6">
+            <p className="text-xl text-primary-900 mb-6">
               AI-powered resume optimization with secure payment
             </p>
           </div>
@@ -334,51 +334,51 @@ export const PricingPage: React.FC<PricingPageProps> = ({
                       <div
                         className={`relative rounded-3xl border-2 transition-all duration-300 ${
                           selectedPlan === plan.id
-                            ? 'border-neon-400 shadow-2xl shadow-neon-400/20 ring-4 ring-neon-400/20'
-                            : 'border-dark-400'
-                        } ${plan.popular ? 'ring-2 ring-electric-400 ring-offset-4 ring-offset-dark-100' : ''}`}
+                            ? 'border-neon-blue shadow-2xl ring-4 ring-neon-blue/20'
+                            : 'border-primary-300'
+                        } ${plan.popular ? 'ring-2 ring-secondary-500 ring-offset-4 ring-offset-dark-bg' : ''}`}
                         onClick={() => setSelectedPlan(plan.id)}
                       >
                         {plan.popular && (
                           <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
-                            <span className="bg-gradient-to-r from-electric-400 to-neon-400 text-dark-100 px-6 py-2 rounded-full text-xs font-bold shadow-lg">
+                            <span className="bg-gradient-to-r from-secondary-500 to-neon-blue text-dark-bg px-6 py-2 rounded-full text-xs font-bold shadow-lg">
                               🏆 Most Popular
                             </span>
                           </div>
                         )}
-                        <div className="p-6 bg-dark-200">
+                        <div className="p-6 bg-primary-100">
                           <div className="text-center mb-6">
                             <div
-                              className={`bg-gradient-to-r ${plan.gradient || 'from-neon-400 to-electric-400'} w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white shadow-lg`}
+                              className={`bg-gradient-to-r ${plan.gradient || 'from-neon-blue to-secondary-500'} w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-dark-bg shadow-lg`}
                             >
                               {getPlanIcon(plan.icon || '')}
                             </div>
                             <div
                               className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border mb-3 ${
-                                plan.tagColor || 'text-neon-400 bg-neon-400/10 border-neon-400/30'
+                                plan.tagColor || 'text-secondary-500 bg-secondary-100 border-secondary-300'
                               }`}
                             >
                               {plan.tag}
                             </div>
-                            <h3 className="text-xl font-bold text-dark-900 mb-2">{plan.name}</h3>
+                            <h3 className="text-xl font-bold text-text-light mb-2">{plan.name}</h3>
                             <div className="text-center mb-4">
-                              <span className="text-3xl font-bold text-dark-900">
+                              <span className="text-3xl font-bold text-text-light">
                                 ₹{plan.price}
                               </span>
-                              <span className="text-dark-600 ml-1 text-base">
+                              <span className="text-primary-900 ml-1 text-base">
                                 /{plan.duration.toLowerCase()}
                               </span>
                             </div>
                           </div>
-                          <div className="bg-gradient-to-r from-dark-300 to-dark-400 rounded-2xl p-4 text-center mb-6">
-                            <div className="text-2xl font-bold text-neon-400">{plan.optimizations}</div>
-                            <div className="text-sm text-dark-600">Resume Credits</div>
+                          <div className="bg-gradient-to-r from-primary-300 to-primary-400 rounded-2xl p-4 text-center mb-6">
+                            <div className="text-2xl font-bold text-secondary-500">{plan.optimizations}</div>
+                            <div className="text-sm text-primary-900">Resume Credits</div>
                           </div>
                           <ul className="space-y-3 mb-6">
                             {plan.features.slice(0, 4).map((feature: string, fi: number) => (
                               <li key={fi} className="flex items-start">
-                                <Check className="w-5 h-5 text-electric-400 mr-3 mt-0.5 flex-shrink-0" />
-                                <span className="text-dark-700 text-sm break-words">{feature}</span>
+                                <Check className="w-5 h-5 text-secondary-500 mr-3 mt-0.5 flex-shrink-0" />
+                                <span className="text-primary-900 text-sm break-words">{feature}</span>
                               </li>
                             ))}
                           </ul>
@@ -386,8 +386,8 @@ export const PricingPage: React.FC<PricingPageProps> = ({
                             onClick={() => setSelectedPlan(plan.id)}
                             className={`w-full py-3 px-4 rounded-xl font-semibold transition-all duration-300 text-base min-h-touch ${
                               selectedPlan === plan.id
-                                ? `bg-gradient-to-r ${plan.gradient || 'from-neon-400 to-electric-400'} text-dark-100 shadow-lg transform scale-105 glow-neon`
-                                : 'bg-dark-300 text-dark-700 hover:bg-dark-400'
+                                ? `bg-gradient-to-r ${plan.gradient || 'from-neon-blue to-secondary-500'} text-dark-bg shadow-lg transform scale-105`
+                                : 'bg-primary-300 text-text-light hover:bg-primary-400'
                             }`}
                           >
                             {selectedPlan === plan.id ? (
@@ -407,13 +407,13 @@ export const PricingPage: React.FC<PricingPageProps> = ({
               </div>
               <button
                 onClick={prevSlide}
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-dark-300/90 hover:bg-dark-400 text-dark-800 p-2 rounded-full shadow-lg transition-all duration-200 z-10 min-w-touch min-h-touch"
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-primary-300/90 hover:bg-primary-400 text-primary-900 p-2 rounded-full shadow-lg transition-all duration-200 z-10 min-w-touch min-h-touch"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-dark-300/90 hover:bg-dark-400 text-dark-800 p-2 rounded-full shadow-lg transition-all duration-200 z-10 min-w-touch min-h-touch"
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary-300/90 hover:bg-primary-400 text-primary-900 p-2 rounded-full shadow-lg transition-all duration-200 z-10 min-w-touch min-h-touch"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
@@ -427,57 +427,57 @@ export const PricingPage: React.FC<PricingPageProps> = ({
                 key={plan.id}
                 className={`relative rounded-3xl border-2 transition-all duration-300 cursor-pointer transform hover:scale-105 ${
                   selectedPlan === plan.id
-                    ? 'border-neon-400 shadow-2xl shadow-neon-400/20 ring-4 ring-neon-400/20'
-                    : 'border-dark-400 hover:border-neon-400/50 hover:shadow-xl'
-                } ${plan.popular ? 'ring-2 ring-electric-400 ring-offset-4 ring-offset-dark-100' : ''}`}
+                    ? 'border-neon-blue shadow-2xl ring-4 ring-neon-blue/20'
+                    : 'border-primary-300 hover:border-secondary-300 hover:shadow-xl'
+                } ${plan.popular ? 'ring-2 ring-secondary-500 ring-offset-4 ring-offset-dark-bg' : ''}`}
                 onClick={() => setSelectedPlan(plan.id)}
               >
                 {plan.popular && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <span className="inline-flex items-center bg-gradient-to-r from-electric-400 to-neon-400 text-dark-100 px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                    <span className="inline-flex items-center bg-gradient-to-r from-secondary-500 to-neon-blue text-dark-bg px-4 py-2 rounded-full text-sm font-bold shadow-lg">
                       <span className="mr-1">🏆</span> Most Popular
                     </span>
                   </div>
                 )}
-                <div className="p-6 bg-dark-200">
+                <div className="p-6 bg-primary-100">
                   <div className="text-center mb-6">
                     <div
-                      className={`bg-gradient-to-r ${plan.gradient || 'from-neon-400 to-electric-400'} w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white shadow-lg`}
+                      className={`bg-gradient-to-r ${plan.gradient || 'from-neon-blue to-secondary-500'} w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-dark-bg shadow-lg`}
                     >
                       {getPlanIcon(plan.icon || '')}
                     </div>
                     <div
                       className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border mb-3 ${
-                        plan.tagColor || 'text-neon-400 bg-neon-400/10 border-neon-400/30'
+                        plan.tagColor || 'text-secondary-500 bg-secondary-100 border-secondary-300'
                       }`}
                     >
                       {plan.tag}
                     </div>
-                    <h3 className="text-xl font-bold text-dark-900 mb-2 break-words">{plan.name}</h3>
+                    <h3 className="text-xl font-bold text-text-light mb-2 break-words">{plan.name}</h3>
                     <div className="text-center mb-4">
-                      <span className="text-3xl font-bold text-dark-900">₹{plan.price}</span>
-                      <span className="text-dark-600 ml-1 text-base">
+                      <span className="text-3xl font-bold text-text-light">₹{plan.price}</span>
+                      <span className="text-primary-900 ml-1 text-base">
                         /{plan.duration.toLowerCase()}
                       </span>
                     </div>
                   </div>
-                  <div className="bg-gradient-to-r from-dark-300 to-dark-400 rounded-2xl p-4 text-center mb-6">
-                    <div className="text-2xl font-bold text-neon-400">{plan.optimizations}</div>
-                    <div className="text-sm text-dark-600">Resume Credits</div>
+                  <div className="bg-gradient-to-r from-primary-300 to-primary-400 rounded-2xl p-4 text-center mb-6">
+                    <div className="text-2xl font-bold text-secondary-500">{plan.optimizations}</div>
+                    <div className="text-sm text-primary-900">Resume Credits</div>
                   </div>
                   <ul className="space-y-3 mb-6">
                     {plan.features.slice(0, 4).map((feature: string, index: number) => (
                       <li key={index} className="flex items-start">
-                        <Check className="w-5 h-5 text-electric-400 mr-3 mt-0.5 flex-shrink-0" />
-                        <span className="text-dark-700 text-sm break-words">{feature}</span>
+                        <Check className="w-5 h-5 text-secondary-500 mr-3 mt-0.5 flex-shrink-0" />
+                        <span className="text-primary-900 text-sm break-words">{feature}</span>
                       </li>
                     ))}
                   </ul>
                   <button
                     className={`w-full py-3 px-4 rounded-xl font-semibold transition-all duration-300 text-base min-h-touch ${
                       selectedPlan === plan.id
-                        ? `bg-gradient-to-r ${plan.gradient || 'from-neon-400 to-electric-400'} text-dark-100 shadow-lg transform scale-105 glow-neon`
-                        : 'bg-dark-300 text-dark-700 hover:bg-dark-400'
+                        ? `bg-gradient-to-r ${plan.gradient || 'from-neon-blue to-secondary-500'} text-dark-bg shadow-lg transform scale-105`
+                        : 'bg-primary-300 text-text-light hover:bg-primary-400'
                     }`}
                   >
                     {selectedPlan === plan.id ? (
@@ -495,15 +495,15 @@ export const PricingPage: React.FC<PricingPageProps> = ({
           </div>
 
           {/* Add-ons Section */}
-          <div className="bg-dark-200 rounded-2xl p-6 mb-8 border border-dark-400">
+          <div className="bg-primary-100 rounded-2xl p-6 mb-8 border border-primary-300">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-semibold text-dark-900 flex items-center">
-                <Plus className="w-5 h-5 mr-2 text-electric-400" />
+              <h3 className="text-xl font-semibold text-text-light flex items-center">
+                <Plus className="w-5 h-5 mr-2 text-secondary-500" />
                 🛒 Add-Ons (Optional)
               </h3>
               <button
                 onClick={() => setShowAddOns(!showAddOns)}
-                className="text-neon-400 hover:text-electric-400 font-medium text-sm"
+                className="text-secondary-500 hover:text-secondary-600 font-medium text-sm"
               >
                 {showAddOns ? 'Hide' : 'Show'} Add-ons
               </button>
@@ -513,28 +513,28 @@ export const PricingPage: React.FC<PricingPageProps> = ({
                 {addOns.map((addOn) => (
                   <div
                     key={addOn.id}
-                    className="bg-dark-300 rounded-lg p-4 border border-dark-400 flex flex-col"
+                    className="bg-primary-300 rounded-lg p-4 border border-primary-400 flex flex-col"
                   >
                     <div className="flex items-center justify-between mb-2">
                       <div>
-                        <h4 className="font-medium text-dark-900 text-sm">{addOn.name}</h4>
-                        <p className="text-neon-400 font-semibold">₹{addOn.price}</p>
+                        <h4 className="font-medium text-text-light text-sm">{addOn.name}</h4>
+                        <p className="text-secondary-500 font-semibold">₹{addOn.price}</p>
                       </div>
                       <div className="flex items-center space-x-2">
                         <button
                           onClick={() =>
                             handleAddOnQuantityChange(addOn.id, (selectedAddOns[addOn.id] || 0) - 1)
                           }
-                          className="w-8 h-8 bg-dark-400 hover:bg-dark-500 rounded-full flex items-center justify-center text-dark-800"
+                          className="w-8 h-8 bg-primary-400 hover:bg-primary-500 rounded-full flex items-center justify-center text-primary-900"
                         >
                           -
                         </button>
-                        <span className="w-8 text-center font-medium text-dark-900">{selectedAddOns[addOn.id] || 0}</span>
+                        <span className="w-8 text-center font-medium text-text-light">{selectedAddOns[addOn.id] || 0}</span>
                         <button
                           onClick={() =>
                             handleAddOnQuantityChange(addOn.id, (selectedAddOns[addOn.id] || 0) + 1)
                           }
-                          className="w-8 h-8 bg-neon-400 hover:bg-neon-500 text-dark-100 rounded-full flex items-center justify-center"
+                          className="w-8 h-8 bg-secondary-500 hover:bg-secondary-600 text-dark-bg rounded-full flex items-center justify-center"
                         >
                           +
                         </button>
@@ -551,7 +551,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({
             <button
               onClick={handleProceedToPayment}
               disabled={!selectedPlanData}
-              className="bg-gradient-to-r from-neon-400 to-electric-400 hover:from-neon-500 hover:to-electric-500 text-dark-100 font-bold py-4 px-8 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 glow-neon min-h-touch"
+              className="bg-gradient-to-r from-neon-blue to-secondary-500 hover:from-secondary-500 hover:to-neon-blue text-dark-bg font-bold py-4 px-8 rounded-2xl transition-all duration-300 shadow-xl transform hover:scale-105 min-h-touch"
             >
               <span className="flex items-center justify-center space-x-2">
                 <Sparkles className="w-6 h-6" />
@@ -568,26 +568,26 @@ export const PricingPage: React.FC<PricingPageProps> = ({
         <div className="container-responsive py-8">
           <div className="max-w-2xl mx-auto">
             {/* Payment Summary */}
-            <div className="bg-dark-200 rounded-2xl p-6 mb-6 border border-dark-400">
-              <h3 className="text-xl font-semibold text-dark-900 mb-4 flex items-center">
-                <Crown className="w-5 h-5 mr-2 text-neon-400" />
+            <div className="bg-primary-100 rounded-2xl p-6 mb-6 border border-primary-300">
+              <h3 className="text-xl font-semibold text-text-light mb-4 flex items-center">
+                <Crown className="w-5 h-5 mr-2 text-secondary-500" />
                 Payment Summary
               </h3>
               <div className="space-y-3 text-base">
                 <div className="flex justify-between items-center">
-                  <span className="text-dark-700">Selected Plan:</span>
-                  <span className="font-semibold text-dark-900 break-words text-right">{selectedPlanData?.name}</span>
+                  <span className="text-primary-900">Selected Plan:</span>
+                  <span className="font-semibold text-text-light break-words text-right">{selectedPlanData?.name}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-dark-700">Credits:</span>
-                  <span className="font-semibold text-dark-900">{selectedPlanData?.optimizations} Resume Credits</span>
+                  <span className="text-primary-900">Credits:</span>
+                  <span className="font-semibold text-text-light">{selectedPlanData?.optimizations} Resume Credits</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-dark-700">Duration:</span>
-                  <span className="font-semibold text-dark-900">{selectedPlanData?.duration}</span>
+                  <span className="text-primary-900">Duration:</span>
+                  <span className="font-semibold text-text-light">{selectedPlanData?.duration}</span>
                 </div>
 
-                <div className="border-t border-dark-400 pt-3 mt-3">
+                <div className="border-t border-primary-300 pt-3 mt-3">
                   {!appliedCoupon ? (
                     <div className="flex flex-col sm:flex-row gap-2">
                       <input
@@ -606,55 +606,55 @@ export const PricingPage: React.FC<PricingPageProps> = ({
                       </button>
                     </div>
                   ) : (
-                    <div className="bg-electric-400/10 border border-electric-400/30 rounded-lg p-3">
+                    <div className="bg-secondary-100 border border-secondary-300 rounded-lg p-3">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center">
-                          <CheckCircle className="w-4 h-4 text-electric-400 mr-2" />
-                          <span className="text-electric-400 font-medium text-sm">
+                          <CheckCircle className="w-4 h-4 text-secondary-500 mr-2" />
+                          <span className="text-secondary-500 font-medium text-sm">
                             Coupon "{appliedCoupon.code}" applied
                           </span>
                         </div>
                         <button
                           onClick={handleRemoveCoupon}
-                          className="text-electric-400 hover:text-neon-400 text-sm underline"
+                          className="text-secondary-500 hover:text-secondary-600 text-sm underline"
                         >
                           Remove
                         </button>
                       </div>
-                      <div className="text-electric-400 text-sm mt-1">
+                      <div className="text-secondary-500 text-sm mt-1">
                         You saved ₹{(appliedCoupon.discount / 100).toFixed(2)}!
                       </div>
                     </div>
                   )}
                   {couponError && (
-                    <div className="text-red-400 text-sm flex items-center mt-1">
+                    <div className="text-red-500 text-sm flex items-center mt-1">
                       <AlertCircle className="w-4 h-4 mr-1" />
                       {couponError}
                     </div>
                   )}
                 </div>
 
-                <div className="border-t border-dark-400 pt-3 mt-3">
+                <div className="border-t border-primary-300 pt-3 mt-3">
                   {!loadingWallet && walletBalance > 0 && (
-                    <div className={`mb-3 p-3 rounded-lg ${selectedPlan === 'addon_only_purchase' ? 'bg-dark-400 border-dark-500' : 'bg-electric-400/10 border-electric-400/30'}`}>
+                    <div className={`mb-3 p-3 rounded-lg ${selectedPlan === 'addon_only_purchase' ? 'bg-primary-400 border-primary-500' : 'bg-secondary-100 border-secondary-300'}`}>
                       <div className="flex items-center justify-between mb-2">
-                        <span className={`text-sm font-medium ${selectedPlan === 'addon_only_purchase' ? 'text-dark-600' : 'text-electric-400'}`}>Use Wallet Balance</span>
+                        <span className={`text-sm font-medium ${selectedPlan === 'addon_only_purchase' ? 'text-primary-900' : 'text-secondary-500'}`}>Use Wallet Balance</span>
                         <button
                           onClick={() => setUseWalletBalance(!useWalletBalance)}
                           disabled={selectedPlan === 'addon_only_purchase'}
                           className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                            useWalletBalance && selectedPlan !== 'addon_only_purchase' ? 'bg-electric-400' : 'bg-dark-500'
+                            useWalletBalance && selectedPlan !== 'addon_only_purchase' ? 'bg-secondary-500' : 'bg-primary-500'
                           }`}
                         >
                           <span
-                            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                            className={`inline-block h-4 w-4 transform rounded-full bg-text-light transition-transform ${
                               useWalletBalance && selectedPlan !== 'addon_only_purchase' ? 'translate-x-6' : 'translate-x-1'
                             }`}
                           />
                         </button>
                       </div>
                       {selectedPlan !== 'addon_only_purchase' && (
-                        <div className="text-sm text-electric-400">
+                        <div className="text-sm text-secondary-500">
                           Available: ₹{(walletBalance / 100).toFixed(2)}
                           {useWalletBalance && (
                             <span className="block mt-1">Using: ₹{(walletDeduction / 100).toFixed(2)}</span>
@@ -662,7 +662,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({
                         </div>
                       )}
                       {selectedPlan === 'addon_only_purchase' && (
-                        <div className="text-sm text-dark-600 flex items-center mt-2">
+                        <div className="text-sm text-primary-900 flex items-center mt-2">
                           <Info className="w-4 h-4 mr-2" />
                           <span>Wallet balance cannot be used for add-on only purchases.</span>
                         </div>
@@ -671,29 +671,29 @@ export const PricingPage: React.FC<PricingPageProps> = ({
                   )}
 
                   {appliedCoupon && appliedCoupon.discount > 0 && (
-                    <div className="flex justify-between items-center text-sm text-dark-600 mb-2">
+                    <div className="flex justify-between items-center text-sm text-primary-900 mb-2">
                       <span>Original Price:</span>
                       <span className="line-through">₹{selectedPlanData?.price}</span>
                     </div>
                   )}
                   {appliedCoupon && appliedCoupon.discount > 0 && (
-                    <div className="flex justify-between items-center text-sm text-electric-400 mb-2">
+                    <div className="flex justify-between items-center text-sm text-secondary-500 mb-2">
                       <span>Discount:</span>
                       <span>-₹{(appliedCoupon.discount / 100).toFixed(2)}</span>
                     </div>
                   )}
                   {useWalletBalance && walletDeduction > 0 && (
-                    <div className="flex justify-between items-center text-sm text-neon-400 mb-2">
+                    <div className="flex justify-between items-center text-sm text-neon-blue mb-2">
                       <span>Wallet Balance Applied:</span>
                       <span>-₹{(walletDeduction / 100).toFixed(2)}</span>
                     </div>
                   )}
                   <div className="flex justify-between items-center text-xl font-bold">
-                    <span className="text-dark-900">Total Amount:</span>
-                    <span className="text-neon-400">₹{(grandTotal / 100).toFixed(2)}</span>
+                    <span className="text-text-light">Total Amount:</span>
+                    <span className="text-secondary-500">₹{(grandTotal / 100).toFixed(2)}</span>
                   </div>
                   {addOnsTotal > 0 && (
-                    <div className="text-sm text-dark-600 mt-2">
+                    <div className="text-sm text-primary-900 mt-2">
                       Plan: ₹{(finalPlanPrice / 100).toFixed(2)} + Add-ons: ₹{(addOnsTotal / 100).toFixed(2)}
                     </div>
                   )}
@@ -716,13 +716,13 @@ export const PricingPage: React.FC<PricingPageProps> = ({
                 disabled={isProcessing}
                 className={`flex-1 py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center justify-center space-x-3 min-h-touch ${
                   isProcessing
-                    ? 'bg-dark-400 cursor-not-allowed text-dark-600'
-                    : 'bg-gradient-to-r from-neon-400 to-electric-400 hover:from-neon-500 hover:to-electric-500 text-dark-100 shadow-xl hover:shadow-2xl transform hover:scale-105 glow-neon'
+                    ? 'bg-primary-400 cursor-not-allowed text-primary-900'
+                    : 'bg-gradient-to-r from-neon-blue to-secondary-500 hover:from-secondary-500 hover:to-neon-blue text-dark-bg shadow-xl transform hover:scale-105'
                 }`}
               >
                 {isProcessing ? (
                   <>
-                    <div className="animate-spin rounded-full h-6 w-6 border-2 border-dark-600 border-t-transparent" />
+                    <div className="animate-spin rounded-full h-6 w-6 border-2 border-primary-900 border-t-transparent" />
                     <span>Processing Payment...</span>
                   </>
                 ) : (
@@ -737,7 +737,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({
               </button>
             </div>
 
-            <p className="text-dark-600 text-sm mt-4 flex items-center justify-center">
+            <p className="text-primary-900 text-sm mt-4 flex items-center justify-center">
               <Info className="w-4 h-4 mr-1" />
               <span>Secure payment powered by Razorpay • 256-bit SSL encryption</span>
             </p>
